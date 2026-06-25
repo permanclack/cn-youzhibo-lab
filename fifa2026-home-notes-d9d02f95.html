@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料索引 · 世界杯档案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fdf1e3 0%, #f9dabc 50%, #f3c8a0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: #2b2b2b;
+        }
+
+        .page-card {
+            max-width: 860px;
+            width: 100%;
+            background: rgba(255, 247, 239, 0.88);
+            backdrop-filter: blur(2px);
+            background-color: #fffaf5;
+            border-radius: 36px;
+            box-shadow: 0 12px 30px rgba(160, 100, 60, 0.18), 0 4px 8px rgba(0, 0, 0, 0.02);
+            padding: 2.8rem 2.4rem;
+            margin-bottom: 2.5rem;
+            transition: box-shadow 0.25s ease;
+        }
+
+        .page-card:hover {
+            box-shadow: 0 18px 36px rgba(150, 80, 40, 0.22);
+        }
+
+        .hero {
+            margin-bottom: 2.6rem;
+        }
+
+        .hero .prelude {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #8b6f55;
+            text-transform: uppercase;
+            font-weight: 450;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid #dbb594;
+            padding-left: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 530;
+            letter-spacing: -0.3px;
+            line-height: 1.15;
+            color: #3a281e;
+            margin: 0.3rem 0 0.8rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(120deg, #b4814f, #865e38);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #3d322a;
+            max-width: 700px;
+            margin-bottom: 1.2rem;
+        }
+
+        .intro-text a {
+            color: #9f6e41;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1.5px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .intro-text a:hover {
+            border-bottom-color: #ac7c50;
+        }
+
+        .separator {
+            width: 60px;
+            height: 3px;
+            background: #dbb594;
+            border-radius: 12px;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #402f22;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .section-title::before {
+            content: "▍";
+            color: #b4814f;
+            font-weight: 300;
+            font-size: 1.6rem;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            margin: 1.5rem 0 2.2rem;
+        }
+
+        .feature-item {
+            background: #fff6ed;
+            padding: 1.1rem 1.4rem;
+            border-radius: 20px;
+            border-left: 5px solid #dbb594;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .feature-item:hover {
+            background: #f2e4d6;
+            transform: translateX(4px);
+        }
+
+        .feature-icon {
+            font-size: 1.3rem;
+            line-height: 1.4;
+            color: #8b6f55;
+            min-width: 1.8rem;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text strong {
+            color: #4b3627;
+            font-weight: 560;
+        }
+
+        .feature-text p {
+            margin: 0.15rem 0 0;
+            color: #4a3c31;
+            font-size: 0.96rem;
+        }
+
+        .quote-block {
+            background: #f3e3d3;
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0;
+            font-style: normal;
+            color: #3b2d21;
+        }
+
+        .quote-block p {
+            font-size: 1.02rem;
+            letter-spacing: 0.02em;
+        }
+
+        .quote-block .source {
+            margin-top: 0.7rem;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #7b634b;
+        }
+
+        .closing-note {
+            background: transparent;
+            border-top: 1px solid #e8d3c0;
+            padding-top: 1.8rem;
+            margin-top: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+
+        .closing-note p {
+            color: #4e3b2c;
+            font-size: 1rem;
+            max-width: 70%;
+        }
+
+        .closing-note .mild-link {
+            background: #dbb594;
+            color: #2d1e13;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            display: inline-block;
+            transition: background 0.2s, box-shadow 0.15s;
+            box-shadow: 0 2px 6px rgba(150, 90, 50, 0.1);
+        }
+
+        .closing-note .mild-link:hover {
+            background: #c8a17b;
+            box-shadow: 0 4px 12px rgba(130, 75, 35, 0.2);
+        }
+
+        .faq-mini {
+            margin: 2rem 0 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .faq-mini details {
+            background: #f9efe6;
+            border-radius: 18px;
+            padding: 0.7rem 1.2rem;
+            cursor: pointer;
+            border: 1px solid #ecdacb;
+            transition: background 0.15s;
+        }
+
+        .faq-mini details[open] {
+            background: #f6e7da;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #3d2d1f;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-mini summary::after {
+            content: "+";
+            font-size: 1.3rem;
+            color: #9f6e41;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::after {
+            content: "–";
+        }
+
+        .faq-mini details p {
+            margin-top: 0.6rem;
+            color: #4b3a2b;
+            font-size: 0.95rem;
+            padding-right: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .page-card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .feature-item {
+                padding: 0.9rem 1rem;
+                flex-wrap: wrap;
+            }
+
+            .closing-note {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .closing-note p {
+                max-width: 100%;
+            }
+
+            .closing-note .mild-link {
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-card">
+        <div class="hero">
+            <div class="prelude">档案 · 叙述线</div>
+            <h1><span>世界杯</span> 资料整理手记</h1>
+            <div class="intro-text">
+                从赛程脉络到历史切片，从球队笔记到冷门纪录——一个长期关注足球档案的编辑，在整理2026年相关信息时，发现历届<a href="https://fifa2026-home.com">世界杯</a>的碎片比想象中更值得串联。这份页面不是官方指南，更像是一份工作台上的索引卡片。
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="section-title">整理过程中浮现的几个特点</div>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-icon">📋</div>
+                <div class="feature-text">
+                    <strong>赛程结构</strong> 
+                    <p>从预选赛分布到决赛圈分组，每一层筛选都对应着不同大洲的竞争曲线。手边表格里标记了至少六种晋级路径。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🏟️</div>
+                <div class="feature-text">
+                    <strong>主办城市与场馆</strong>
+                    <p>十六个承办场地分布在三个国家，气候与海拔跨度明显。资料夹里夹着一张海拔对比便签，有些数据挺有意思。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <div class="feature-text">
+                    <strong>历史参照系</strong>
+                    <p>把过去二十届的进球分布、控球率极端值、最大分差做了横向简表。某些模式在每四年都会以类似面貌重现。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-text">
+                    <strong>冷门与故事线</strong>
+                    <p>除了夺冠热门，资格赛突围历程、老将最后一届、新星首秀——这些叙事往往藏在数据表的下层抽屉里。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <p>“把零散的信息聚拢在同一张桌子上，不是为了预测什么，而是让看球的人多一个安静的参照系。索引本身就有它的温度。”</p>
+            <div class="source">—— 摘自某份赛事笔记的前言</div>
+        </div>
+
+        <div class="faq-mini">
+            <details>
+                <summary>这份索引偏向哪些内容？</summary>
+                <p>偏向可查证的赛事结构、场地基础信息、历史数据对比，以及一些不易在热门推送里看到的背景。不包含博彩赔率或主观预测。</p>
+            </details>
+            <details>
+                <summary>资料更新频率大概怎样？</summary>
+                <p>随着预选赛阶段推进，会陆续补充球队晋级状态和场馆进度。目前处于基础框架整理阶段。</p>
+            </details>
+            <details>
+                <summary>会加入球迷场景内容吗？</summary>
+                <p>可能会在后续索引中加入交通与观赛贴士类信息，但前提是来源可靠、表述克制。</p>
+            </details>
+        </div>
+
+        <div class="closing-note">
+            <p>如果你也在整理关于 <strong>世界杯</strong> 的零散材料，或许可以对比一下各自找到的线索。</p>
+            <a href="https://fifa2026-home.com" class="mild-link">世界杯</a>
+        </div>
+    </div>
+</body>
+</html>
